@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--配置整合Mybatis过程 -->
+    <!--配置数据库相关参数 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--配置数据库连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!--c3p0私有属性配置 -->
+        <!--<property name="autoCommitOnClose" value="false"/>-->
+        <property name="acquireRetryAttempts" value="2"/>
+    </bean>
+
+    <!--配置sqlsessionFactory对象 -->
+    <bean id="sqlsessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据库连接池 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置Mybatis全局配置文件：mybatis-config.xml -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--扫描bean包 使用别名 com.zsx.bean.User->User -->
+        <property name="typeAliasesPackage" value="com.zsx.bean"/>
+        <!--扫描SQL配置文件  mapper需要的xml -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!--配置扫描DAo接口包 动态实现Dao接口 并注入到Spring容器中-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlsessionFactory"/>
+        <!--给出扫描Dao接口包 -->
+        <property name="basePackage" value="com.zsx.dao"/>
+
+    </bean>
+
+</beans>

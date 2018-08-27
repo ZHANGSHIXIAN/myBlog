@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zsx.dao.BlogDao">
+    <insert id="insertBlog">
+        insert into blog(title,content_html,content_md,sort_id,user_id,type) values(
+          #{blog.title},
+          #{blog.contentHtml},
+          #{blog.contentMd},
+          1,
+          #{userId},
+          1
+        )
+
+    </insert>
+
+    <delete id="deleteBlogById">
+        delete from blog where blog_id=#{blogId}
+    </delete>
+
+    <update id="updateBlog">
+        update blog set title=#{blog.title},
+        content_html=#{blog.contentHtml},
+        content_md=#{blog.contentMd},
+        sort_id=#{blog.sortId},
+        user_id=#{blog.userId},
+        number=#{blog.number},
+        type=#{blog.type}
+        where blog_id=#{blog.blogId};
+    </update>
+
+    <select id="queryAllblogByUserId" resultType="Blog">
+        select * from blog where user_id=#{userId}
+        <if test="type != 3">
+            and type=#{type}
+        </if>
+        <!-- &&改为&amp;&amp;或者and  双引号""改为&quot;&quot; -->
+        <if test="like!= null &amp;&amp; !&quot;&quot;.equals(like.trim())">
+            and content_html like concat(concat('%',#{like}),'%')
+        </if>
+        order by create_time limit #{page.dbIndex},#{page.dbNumber}
+    </select>
+
+
+    <select id="queryBlogById" resultType="Blog">
+        select * from blog where blog_id=#{blogId};
+    </select>
+
+    <select id="queryBlogCount" resultType="int">
+        select count(*) from blog where user_id=#{userId}
+        <if test="type != 3">
+            and type=#{type}
+        </if>
+        <!-- &&改为&amp;&amp;或者and  双引号""改为&quot;&quot; -->
+        <if test="like!= null &amp;&amp; !&quot;&quot;.equals(like.trim())">
+            and content_html like concat(concat('%',#{like}),'%')
+        </if>
+
+    </select>
+
+</mapper>
