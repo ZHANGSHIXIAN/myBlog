@@ -1,5 +1,8 @@
 package com.zsx.bean;
 
+/**
+ * 用于传输用户名和密码的对象
+ */
 public class UserDto {
     private String name;
 
@@ -19,5 +22,13 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

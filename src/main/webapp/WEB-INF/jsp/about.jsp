@@ -29,9 +29,13 @@
   <%@include file="common/nav.jsp"%>
   <%@include file="common/login.jsp"%><div class="container">
     <div class="jumbotron">
-      <h1>请先登录</h1>
-      <p class="lead">登陆后即可使用markdown发表博客~</p>
-      <p><a class="btn btn-lg btn-success" onclick="login()" role="button">登陆</a></p>
+      <h2>关于我</h2>
+      <p class="lead">姓名:张世贤</p>
+      <p class="lead">年龄:23</p>
+      <p class="lead">所在城市:深圳</p>
+      <p class="lead">联系邮箱:623678979@qq.com</p>
+      <p class="lead">本站所用技术:Spring+SpringMvc+Mybatis+mysql+bootstrap+ajax+editormd(markdown编辑器)</p>
+      <p>github地址:<a href="https://github.com/ZHANGSHIXIAN/myBlog">https://github.com/ZHANGSHIXIAN/myBlog</a></p>
     </div>
 
 
@@ -47,10 +51,5 @@
 
   </body>
   <script type="text/javascript" src="/resources/js/blog.js"></script>
-  <script>
-      $(document).ready(function () {
-          init();
-          login();
-      })
-  </script>
+
 </html>

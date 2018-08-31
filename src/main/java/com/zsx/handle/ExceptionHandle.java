@@ -1,4 +1,4 @@
-package com.zsx.web;
+package com.zsx.handle;
 
 import com.zsx.bean.Result;
 import com.zsx.exception.MyBlogException;
@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+/*
+处理异常信息
+ */
 @ControllerAdvice
 public class ExceptionHandle {
 
@@ -17,8 +21,8 @@ public class ExceptionHandle {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result handle(Exception e){
+        //如果是自定义的异常就返回自定义的ResultEnum
         if(e instanceof MyBlogException){
-            logger.info("1111111111111111111111111", e);
             MyBlogException exception=(MyBlogException) e;
             return ResultUtil.error(exception.getCode(), exception.getMessage());
         }else {

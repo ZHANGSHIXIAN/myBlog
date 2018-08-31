@@ -1,7 +1,11 @@
-package com.zsx.demo.utils;
+package com.zsx.utils;
 
-import com.zsx.demo.domain.Result;
 
+import com.zsx.bean.Result;
+
+/**
+ * Result·工具类
+ */
 public class ResultUtil {
     public static Result success(Object object){
         Result result=new Result();

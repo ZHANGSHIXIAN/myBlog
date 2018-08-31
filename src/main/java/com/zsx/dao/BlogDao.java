@@ -7,6 +7,7 @@ import org.springframework.context.weaving.DefaultContextLoadTimeWeaver;
 
 import java.util.List;
 
+//Blog接口
 public interface BlogDao {
 
     /**
@@ -46,11 +47,5 @@ public interface BlogDao {
      * @return
      */
     int queryBlogCount(@Param("userId") long userId,@Param("type") int type,@Param("like") String like);
-
-    /**
-     * 通过blogId删除博客
-     * @param blogId
-     * @return
-     */
 
 }

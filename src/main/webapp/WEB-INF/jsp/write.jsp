@@ -83,10 +83,15 @@
         $("#blog_md").val(md_edit.getMarkdown());//md格式内容，使用md的js获取
         $("#blog_html").val(md_edit.getHTML());
         $("#formBlog").ajaxSubmit({
-            success : function(da) {
-                //$.scojs_message('发布成功');
+            success : function(data) {
+                if (data['code']=200){
+                    alert(data['msg']);
+                    window.location.href = "/myblog/home";
+                }else {
+                    alert(data['msg']);
+                }
 
-                    alert("发表");
+
             }
         });
     });

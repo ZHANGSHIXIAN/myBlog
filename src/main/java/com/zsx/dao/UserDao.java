@@ -3,6 +3,7 @@ package com.zsx.dao;
 import com.zsx.bean.UserDto;
 import org.apache.ibatis.annotations.Param;
 
+//user接口
 public interface UserDao {
 
     /**

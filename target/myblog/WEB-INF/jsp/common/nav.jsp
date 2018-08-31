@@ -19,7 +19,7 @@
                     <button type="button"  id="login" class="btn btn-success btn-sm" onclick="login()">登陆</button>&nbsp;
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-info btn-sm" onclick="window.location.href='<%=basePath%>myblog/write'">关于我</button>
+                    <button type="button" class="btn btn-info btn-sm" onclick="window.location.href='<%=basePath%>myblog/about'">关于我</button>
                 </li>
             </ul>
         </div>

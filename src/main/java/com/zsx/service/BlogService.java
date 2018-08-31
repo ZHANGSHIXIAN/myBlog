@@ -1,6 +1,7 @@
 package com.zsx.service;
 
 import com.zsx.bean.Blog;
+import com.zsx.bean.UserDto;
 
 import java.util.Map;
 
@@ -23,9 +24,9 @@ public interface BlogService {
     public Blog getBlogById(long blogId);
 
 
-    public int insertBlog(Blog blog);
+    public void insertBlog(Blog blog) throws Exception;
 
-    public int deleteBlog(String blogId);
+    public void deleteBlog(String blogId) throws Exception;
 
 
 

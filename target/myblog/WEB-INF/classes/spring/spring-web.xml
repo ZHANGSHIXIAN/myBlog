@@ -25,9 +25,20 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!--4.扫描web相关的Bean-->
-    <context:component-scan base-package="com.zsx.web"/>
+   <!--4.扫描web相关的Bean-->
+    <!--<context:component-scan base-package="com.zsx.web"/>-->
 
+    <!--&lt;!&ndash; 处理异常 &ndash;&gt;-->
+    <!--<context:component-scan base-package="com.zsx.web" use-default-filters="false">-->
+        <!--&lt;!&ndash; base-package 如果多个，用“,”分隔 &ndash;&gt;-->
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
+        <!--&lt;!&ndash;控制器增强，使一个Contoller成为全局的异常处理类，类中用@ExceptionHandler方法注解的方法可以处理所有Controller发生的异常&ndash;&gt;-->
+        <!--<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />-->
+    <!--</context:component-scan>-->
+    <context:component-scan base-package="com.zsx.web,com.zsx.handle" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
 
 
 </beans>

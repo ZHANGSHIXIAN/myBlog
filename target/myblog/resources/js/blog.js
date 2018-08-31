@@ -18,9 +18,11 @@ function deleteBlog(id) {
             url:"/myblog/delete?id="+id,
             type: "post",
             success: function (data) {
-                if (data.status=="success") {
+                if (data['code']==200) {
                     alert("删除成功");
                     window.location.href = "/myblog/home";
+                }else {
+                    alert(data['msg']);
                 }
             },
 
@@ -106,8 +108,8 @@ function dologin() {
             $("#name").val(name);
             $("#password").val(password);
             $("#formLogin").ajaxSubmit({
-                success : function(data) {
-                    if (data.status=="success"){
+                success : function(result) {
+                    if (result['code']==0){
                         $.cookie('username',name,{
                             expires:7,
                             path:'/'});

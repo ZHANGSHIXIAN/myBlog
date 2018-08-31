@@ -7,6 +7,6 @@ import javax.print.attribute.standard.JobOriginatingUserName;
 
 public interface UserService {
 
-    public int doLogin(UserDto userDto);
+    public void doLogin(UserDto userDto) throws Exception;
 
 }

@@ -39,7 +39,7 @@
         <if test="like!= null &amp;&amp; !&quot;&quot;.equals(like.trim())">
             and content_html like concat(concat('%',#{like}),'%')
         </if>
-        order by create_time limit #{page.dbIndex},#{page.dbNumber}
+        order by create_time desc limit #{page.dbIndex},#{page.dbNumber}
     </select>
 
 

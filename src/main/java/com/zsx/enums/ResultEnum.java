@@ -1,12 +1,15 @@
-package com.zsx.demo.enums;
+package com.zsx.enums;
 
-import org.omg.CORBA.UNKNOWN;
-
+//http返回数据的枚举
 public enum ResultEnum {
     UNKNOW_ERROR(-1,"未知错误"),
-    SUCCESS(0,"成功"),
-    PRIMARY_SCHOOL(100,"你可能还在上小学"),
-    MIDDLE_SCHOOL(101,"你可能还在上初中");
+    LOGIN_SUCCESS(0,"登陆成功"),
+    LOGIN_FAIL(1,"登陆失败"),
+    SUBMIT_FAIL(101,"发表博客失败"),
+    SUBMIT_SUCCESS(100,"发表博客成功"),
+    DELETE_SUCCESS(200,"删除博客成功"),
+    DELETE_FAIL(201,"删除博客失败");
+
 
     private Integer code;
 
